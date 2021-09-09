@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
 import axios from 'axios';
-import store from './store.js'
-import thunk from "redux-thunk";
+import store from './store.js' 
 
-//component 1: Movie
-
-
-
-//component 2: Nav
-
+//import components
+import Nav from './Nav';
+import Movies from './Movies';
+import CreateForm from './CreateForm';
 
 
 //Redux
@@ -27,7 +24,7 @@ class _App extends Component{
       const { movies, view } = this.props;
       return (
         <div>
-          <h1>My Movie List</h1>
+          <h1>My Movie Diary</h1>
           <Nav />
           <CreateForm />
           <Movies />
