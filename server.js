@@ -68,7 +68,7 @@ app.delete('api/movies/:id', async(req,res,next)=>{
 
 //DATABASE
 const Sequelize = require('sequelize');
-const {STRING, NUMBER} = require('sequelize');
+const {STRING, NUMBER, BOOLEAN} = require('sequelize');
 const db = new Sequelize(
     process.env.DATABASE_URL || 'postgres://localhost/movies',
     {
@@ -106,14 +106,19 @@ const Movie = db.define('movie', {
         allowNull: false,
         defaultValue: false
       },
+    comments: {
+        type: VALCHAR,
+        allowNull: true,
+    }
 })
-
 
 //SEED
 const syncAndSeed = async()=> {
     await conn.sync({ force: true });
     await Promise.all(
+
         // to write
+        //I'm not sure how to seed data from my database
     );
   };
 

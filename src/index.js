@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
 import { connect, Provider } from 'react-redux';
-import axios from 'axios';
+// deleted: import axios from 'axios';
 import store from './store.js' 
 
 //import components
 import Nav from './Nav';
 import Movies from './Movies';
 import CreateForm from './CreateForm';
-
 
 //Redux
 
