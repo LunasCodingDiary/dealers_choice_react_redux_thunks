@@ -68,7 +68,7 @@ app.delete('api/movies/:id', async(req,res,next)=>{
 
 //DATABASE
 const Sequelize = require('sequelize');
-const {STRING} = require('sequelize');
+const {STRING, NUMBER} = require('sequelize');
 const db = new Sequelize(
     process.env.DATABASE_URL || 'postgres://localhost/movies',
     {
@@ -88,37 +88,34 @@ const Movie = db.define('movie', {
         }
       },
     genre:{
-       type: ENUM('STUDENT','TEACHER'),
-       allowNull:false,
-       defaultValue:'STUDENT'
+       type: STRING,
+       allowNull:false
       },
-      //tier 3
+
     year:{
-        type:VIRTUAL,
-        get: function(){
-          return this.userType==='STUDENT'
-        }
+        type:NUMBER,
+        allowNull:false
       }, 
-    runtime:{
-        type:VIRTUAL,
-        get: function(){
-          return this.userType==='STUDENT'
-        }
-    }, 
+    
+    number:{
+        type:NUMBER,
+        allowNull:false
+    },
+    watched: {
+        type: BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
 })
 
 
 //SEED
 const syncAndSeed = async()=> {
     await conn.sync({ force: true });
-    await Promise.all([
-      Movie.create({ name: 'milk' }),
-      Movie.create({ name: 'eggs' }),
-      Movie.create({ name: 'cheeze', purchased: true })
-    ]);
+    await Promise.all(
+        // to write
+    );
   };
-  
-
 
 //INIT; app listening
 const init = async()=> {
